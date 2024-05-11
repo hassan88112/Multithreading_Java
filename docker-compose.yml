@@ -1,0 +1,15 @@
+services:
+  app:
+    image: openjdk:21
+    command: /app/command.sh
+    volumes:
+      - ./:/app
+      - ./target/MultithreadingDemo-1.0-SNAPSHOT-jar-with-dependencies.jar:/app/MultithreadingDemo-1.0-SNAPSHOT-jar-with-dependencies.jar
+    environment:
+      - THREAD_POOL_SIZE=5
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+        reservations:
+          cpus: '4.0'
